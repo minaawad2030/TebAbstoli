@@ -15,20 +15,19 @@ export class QuestionComponent implements OnInit {
   questions: Question[] = [];
   currrentQuestion: Question = new Question();
   index = 0;
-  rightTeamTotalScore: number = 0;
-  leftTeamTotalScore: number = 0;
 
   rightTeam: RightTeam = new RightTeam();
   leftTeam: LeftTeam = new LeftTeam();
 
   questionTotalScoreBlocked = false;
   constructor(
-    private questionsService: QuestionsService,
+    public questionsService: QuestionsService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.questions = questionsArr;
     this.activatedRoute.queryParamMap.subscribe({
       next: (res) => {
         let tempIndex = res.get('question');
@@ -37,8 +36,12 @@ export class QuestionComponent implements OnInit {
           if (this.index - 1 < this.questions.length) {
             this.currrentQuestion = this.questions[this.index - 1];
             console.log(this.currrentQuestion);
+          } else {
+            this.router.navigate(['final']);
           }
-        } else this.router.navigate([''], { queryParams: { question: '1' } });
+        } else {
+          this.router.navigate([''], { queryParams: { question: '1' } });
+        }
       },
     });
 
@@ -49,8 +52,6 @@ export class QuestionComponent implements OnInit {
     //     console.log(this.currrentQuestion);
     //   },
     // });
-    this.questions = questionsArr;
-    console.log(this.questions);
   }
 
   @HostListener('document:keypress', ['$event'])
@@ -121,22 +122,23 @@ export class QuestionComponent implements OnInit {
       const isBlueTrue = this.currrentQuestion.answers[0].isCorrect;
       if (isBlueTrue) {
         if (this.leftTeam.blueScore > this.rightTeam.blueScore) {
-          this.leftTeamTotalScore++;
+          this.questionsService.leftTeamTotalScore++;
         } else if (this.rightTeam.blueScore > this.leftTeam.blueScore) {
-          this.rightTeamTotalScore++;
+          this.questionsService.leftTeamTotalScore++;
+          this.questionsService.rightTeamTotalScore++;
         } else {
-          this.leftTeamTotalScore++;
-          this.rightTeamTotalScore++;
+          this.questionsService.leftTeamTotalScore++;
+          this.questionsService.rightTeamTotalScore++;
         }
         this.questionTotalScoreBlocked = true;
       } else {
         if (this.leftTeam.orangeScore > this.rightTeam.orangeScore)
-          this.leftTeamTotalScore++;
+          this.questionsService.leftTeamTotalScore++;
         else if (this.leftTeam.orangeScore < this.rightTeam.orangeScore)
-          this.rightTeamTotalScore++;
+          this.questionsService.rightTeamTotalScore++;
         else {
-          this.leftTeamTotalScore++;
-          this.rightTeamTotalScore++;
+          this.questionsService.leftTeamTotalScore++;
+          this.questionsService.rightTeamTotalScore++;
         }
         this.questionTotalScoreBlocked = true;
       }
