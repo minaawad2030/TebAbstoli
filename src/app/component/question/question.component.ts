@@ -15,7 +15,8 @@ export class QuestionComponent implements OnInit {
   questions: Question[] = [];
   currrentQuestion: Question = new Question();
   index = 0;
-
+  isOrangeTrue: Boolean = false;
+  isBlueTrue: boolean = false;
   rightTeam: RightTeam = new RightTeam();
   leftTeam: LeftTeam = new LeftTeam();
 
@@ -57,7 +58,7 @@ export class QuestionComponent implements OnInit {
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     //r for reset questions
-    if (event.key == 'r') this.questionReset();
+    if (event.key == 'r' || event.key == 'R') this.questionReset();
     //SPACE for move to next question
     else if (event.key == ' ') this.changeParams();
     // . To calculate Score
@@ -119,24 +120,46 @@ export class QuestionComponent implements OnInit {
 
   calculateTotalScore() {
     if (this.isAllButtonsClicked() && !this.questionTotalScoreBlocked) {
-      const isBlueTrue = this.currrentQuestion.answers[0].isCorrect;
-      if (isBlueTrue) {
-        if (this.leftTeam.blueScore > this.rightTeam.blueScore) {
+      this.isBlueTrue = this.currrentQuestion.answers[0].isCorrect;
+      this.isOrangeTrue = this.currrentQuestion.answers[1].isCorrect;
+      const isRightMostBlue =
+        this.rightTeam.blueScore > this.rightTeam.orangeScore;
+      const isLeftMostOrange =
+        this.leftTeam.orangeScore > this.leftTeam.blueScore;
+      if (this.isBlueTrue) {
+        if (
+          this.leftTeam.blueScore > this.rightTeam.blueScore &&
+          (isRightMostBlue || !isLeftMostOrange)
+        ) {
           this.questionsService.leftTeamTotalScore++;
-        } else if (this.rightTeam.blueScore > this.leftTeam.blueScore) {
-          this.questionsService.leftTeamTotalScore++;
+        } else if (
+          this.rightTeam.blueScore > this.leftTeam.blueScore &&
+          (isRightMostBlue || !isLeftMostOrange)
+        ) {
           this.questionsService.rightTeamTotalScore++;
-        } else {
+        } else if (
+          this.rightTeam.blueScore == this.leftTeam.blueScore &&
+          (isRightMostBlue || !isLeftMostOrange)
+        ) {
           this.questionsService.leftTeamTotalScore++;
           this.questionsService.rightTeamTotalScore++;
         }
         this.questionTotalScoreBlocked = true;
-      } else {
-        if (this.leftTeam.orangeScore > this.rightTeam.orangeScore)
+      } else if (this.isOrangeTrue) {
+        if (
+          this.leftTeam.orangeScore > this.rightTeam.orangeScore &&
+          (isLeftMostOrange || !isRightMostBlue)
+        )
           this.questionsService.leftTeamTotalScore++;
-        else if (this.leftTeam.orangeScore < this.rightTeam.orangeScore)
+        else if (
+          this.leftTeam.orangeScore < this.rightTeam.orangeScore &&
+          (isLeftMostOrange || !isRightMostBlue)
+        )
           this.questionsService.rightTeamTotalScore++;
-        else {
+        else if (
+          this.rightTeam.orangeScore == this.leftTeam.orangeScore &&
+          (isLeftMostOrange || !isRightMostBlue)
+        ) {
           this.questionsService.leftTeamTotalScore++;
           this.questionsService.rightTeamTotalScore++;
         }
@@ -148,5 +171,7 @@ export class QuestionComponent implements OnInit {
     this.rightTeam = new RightTeam();
     this.leftTeam = new LeftTeam();
     this.questionTotalScoreBlocked = false;
+    this.isBlueTrue = false;
+    this.isOrangeTrue = false;
   }
 }

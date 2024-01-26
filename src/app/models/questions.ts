@@ -8,31 +8,31 @@ export var questionsArr: Question[] = [
       {
         id: 1,
         content: 'برنابا',
-        isCorrect: true,
+        isCorrect: false,
         questionId: 1,
       },
       {
         id: 2,
         content: 'مرقس',
-        isCorrect: false,
+        isCorrect: true,
         questionId: 1,
       },
     ],
   },
   {
     id: 2,
-    content: 'في بابوس آمن الوالي سرجيوس عندما صلى بولس الرسول على الساحر و',
+    content: 'في بافوس آمن الوالي سرجيوس عندما صلى بولس الرسول على الساحر و',
     answers: [
       {
         id: 3,
-        content: 'جعله أعمى',
-        isCorrect: true,
+        content: 'شفاه',
+        isCorrect: false,
         questionId: 2,
       },
       {
         id: 4,
-        content: 'شفاه',
-        isCorrect: false,
+        content: 'جعله أعمى',
+        isCorrect: true,
         questionId: 2,
       },
     ],
@@ -75,7 +75,7 @@ export var questionsArr: Question[] = [
   },
   {
     id: 5,
-    content: 'ماذا تجمع اليهود غير المؤمنين على بولس وبرنابا في أيقونية',
+    content: ' لماذا تجمع اليهود غير المؤمنين على بولس وبرنابا في أيقونية؟',
     answers: [
       {
         id: 11,
@@ -93,18 +93,18 @@ export var questionsArr: Question[] = [
   },
   {
     id: 6,
-    content: 'في لسترة عندما أقم بولس الرجل العاجز طنوا أنهم آلهة سموا بولس',
+    content: 'في لسترة عندما أقام بولس الرجل العاجز طنوا أنهم آلهة سموا بولس',
     answers: [
       {
         id: 13,
         content: 'هرمس',
-        isCorrect: false,
+        isCorrect: true,
         questionId: 6,
       },
       {
         id: 14,
         content: 'زفس',
-        isCorrect: true,
+        isCorrect: false,
         questionId: 6,
       },
     ],
@@ -115,21 +115,21 @@ export var questionsArr: Question[] = [
     answers: [
       {
         id: 15,
-        content: 'برنابا',
-        isCorrect: false,
+        content: 'سيلا',
+        isCorrect: true,
         questionId: 7,
       },
       {
         id: 16,
-        content: 'سيلا',
-        isCorrect: true,
+        content: 'برنابا',
+        isCorrect: false,
         questionId: 7,
       },
     ],
   },
   {
     id: 8,
-    content: 'كان تموثاوس مشهود له من الجميع لذلك قرر بولس الرسول أن',
+    content: 'كان تيموثاوس مشهود له من الجميع لذلك قرر بولس الرسول أن',
     answers: [
       {
         id: 17,
@@ -165,18 +165,18 @@ export var questionsArr: Question[] = [
   },
   {
     id: 10,
-    content: 'حارس سجن فيليبي',
+    content: 'عندما حدث زلزال في السجن. حارس سجن فيليبي',
     answers: [
       {
         id: 23,
-        content: 'آمن بالرب يسوع',
-        isCorrect: true,
+        content: 'قتل نفسه',
+        isCorrect: false,
         questionId: 10,
       },
       {
         id: 25,
-        content: 'قتل نفسه',
-        isCorrect: false,
+        content: 'آمن بالرب يسوع',
+        isCorrect: true,
         questionId: 10,
       },
     ],
@@ -187,14 +187,16 @@ export var questionsArr: Question[] = [
     answers: [
       {
         id: 27,
-        content: 'بيت ياسون',
-        isCorrect: false,
+
+        content: 'مجمع اليهود',
+        isCorrect: true,
         questionId: 11,
       },
       {
         id: 28,
-        content: 'مجمع اليهود',
-        isCorrect: true,
+
+        content: 'بيت باسون',
+        isCorrect: false,
         questionId: 11,
       },
     ],
@@ -220,19 +222,151 @@ export var questionsArr: Question[] = [
   {
     id: 13,
     content:
-      'كانوا يعبدوا أصنام كتيرة منهم الإله المجهول وقال لهم بولس هو الله',
+      'كانوا يعبدوا أصنام كثيرة منهم الإله المجهول وقال لهم بولس هو الله',
     answers: [
       {
         id: 32,
-        content: 'في أثينا',
-        isCorrect: true,
+
+        content: 'في كورنثوس',
+        isCorrect: false,
         questionId: 13,
       },
       {
         id: 33,
-        content: 'في كورنثوس',
-        isCorrect: false,
+        content: 'في أثينا',
+        isCorrect: true,
         questionId: 13,
+      },
+    ],
+  },
+  {
+    id: 14,
+    content: 'كان بولس يقيم في منزل أكيلا وبرسيكلا في كورنثوس وكانوا عملهم',
+    answers: [
+      {
+        id: 34,
+        content: 'بيع الخيام',
+        isCorrect: false,
+        questionId: 14,
+      },
+      {
+        id: 35,
+        content: 'صناعة الخيام',
+        isCorrect: true,
+        questionId: 14,
+      },
+    ],
+  },
+  {
+    id: 15,
+    content: 'ظل بولس الرسول في أفسس لمدة',
+    answers: [
+      {
+        id: 36,
+        content: 'ثلاث سنوات',
+        isCorrect: false,
+        questionId: 15,
+      },
+      {
+        id: 37,
+        content: 'سنتين',
+        isCorrect: true,
+        questionId: 15,
+      },
+    ],
+  },
+  {
+    id: 16,
+    content:
+      'أبناء الكاهن قالوا للروح الشرير الساكن في الرجل "أنا آمرك باسم يسوع الذي ينادي به بولس"',
+    answers: [
+      {
+        id: 38,
+        content: 'ضربهم الرجل',
+        isCorrect: true,
+        questionId: 16,
+      },
+      {
+        id: 39,
+        content: 'فخرج الروح',
+        isCorrect: false,
+        questionId: 16,
+      },
+    ],
+  },
+  {
+    id: 17,
+    content:
+      'كان ديمتريوس يحرض الشعب ضد بولس الرسول لانه كان خايف على عمله وهو صناعة',
+    answers: [
+      {
+        id: 40,
+        content: 'تماثيل أرطميس',
+        isCorrect: false,
+        questionId: 17,
+      },
+      {
+        id: 41,
+        content: 'هياكل أرطميس',
+        isCorrect: true,
+        questionId: 17,
+      },
+    ],
+  },
+  {
+    id: 18,
+    content: 'عندما سقط شاب ميتاً من الدور الثالث أثناء عظة بولس في ترواس',
+    answers: [
+      {
+        id: 42,
+        content: 'صلى له وأقامه',
+        isCorrect: false,
+        questionId: 18,
+      },
+      {
+        id: 43,
+        content: 'قال إنه حي وأكمل وعظ',
+        isCorrect: true,
+        questionId: 18,
+      },
+    ],
+  },
+  {
+    id: 19,
+    content: 'قال بولس للقسوس في ميليتس أنهم لن يروا وجهه مرة أخرى',
+    answers: [
+      {
+        id: 43,
+        content: 'فودعوه',
+        isCorrect: true,
+        questionId: 19,
+      },
+      {
+        id: 44,
+        content: 'فلم يتركوه',
+        isCorrect: false,
+        questionId: 19,
+      },
+    ],
+  },
+  {
+    id: 20,
+    content:
+      'أخذ أغابوس منطقة بولس وربطها على يديه ورجليه وتنبأ أن بولس سوف يربطوه في',
+    answers: [
+      {
+        id: 45,
+
+        content: 'أورشليم',
+        isCorrect: true,
+        questionId: 20,
+      },
+      {
+        id: 46,
+
+        content: 'أنطاكية',
+        isCorrect: false,
+        questionId: 20,
       },
     ],
   },
